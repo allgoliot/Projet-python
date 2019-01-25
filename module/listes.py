@@ -17,6 +17,7 @@ def remplace(liste,element1,element2):
 		liste[index]=element2
 	else:
 		index+=1
+
 def supprime(liste,element):
 	liste.remove(element)
 
@@ -41,9 +42,9 @@ def creerliste():
 	cpt=1
 	liste=[]
 	while fin == 0:
-		message="element n°"+str(cpt)+" de la liste (END to stop) : "
+		message="element n°"+str(cpt)+" de la liste (champ vide=stop) : "
 		entree=input(message)
-		if entree != "END":
+		if entree != "":
 			liste.append(entree)
 			cpt+=1
 		else:
@@ -51,41 +52,86 @@ def creerliste():
 	return liste
 
 def menu():
-	retour=0
-	print("---Menu de la mort !---")
-	print("1. Compter le nb d\'element d\'une liste")
-	print("2. Afficher la liste")
-	print("3. Ajouter un element en fin de liste")
-	print("4. Remplacer un element de la liste par un autre")
-	print("5. Supprimer un element de la liste")
-	print("6. Demo de liste.py")
-	print("*. Fin")
-	choix=input("Votre choix : ")
-	if choix=="1":
-		print("----")
-		liste=creerliste()
-		print(nb_elements(liste))
-		print("----")
-	elif choix=="2":
-		print("")
-	elif choix=="3":
-		print("")
-	elif choix=="4":
-		print("")
-	elif choix=="5":
-		print("")
-	elif choix=="6":
-		demoliste()
-	else:
-		print("Aucun choix")
-		print("Fin du programme")
-		retour = 1
-	return retour
-
-
-def Boucle():
 	fin=0
+	liste=[]
 	while fin == 0:
-		fin=menu()
+		print("---Menu de la mort !---")
+		print("- 0. Creer une liste auto")
+		print("- 1. Compter le nb d\'element d\'une liste (la creer si vide)")
+		print("- 2. Afficher la liste")
+		print("- 3. Ajouter un element en fin de liste")
+		print("- 4. Remplacer un element de la liste par un autre")
+		print("- 5. Supprimer un element de la liste")
+		print("- 6. Demo de liste.py")
+		print("- *. Fin")
+		print("-----------------------")
+		choix=input("Votre choix : ")
+		if choix=="0": #creation liste auto
+			print("----")
+			if liste == []:
+				print("Création !")
+				liste= ["element1","element2","element3"]
+			print("----\n")
+		elif choix=="1": #Compter le nb d\'element d\'une liste
+			print("----")
+			if liste == []:
+				print("Liste est vide\nCréation !")
+				liste=creerliste()
+				print("Il y a ",nb_elements(liste)," element dans votre liste")
+			else:
+				print("Il y a ",nb_elements(liste)," element dans votre liste")
+			print("----\n")
+		elif choix=="2":#Afficher la liste
+			print("----")
+			if liste == []:
+				print("Liste est vide\nCréation !")
+				liste=creerliste()
+				afficher_la_liste(liste)
+			else:
+				afficher_la_liste(liste)
+			print("----\n")
+		elif choix=="3":#Ajouter un element en fin de liste
+			print("----")
+			if liste == []:
+				print("Liste est vide\nCréation !")
+				liste=creerliste()
+				print("Done")
+			else:
+				ajouter_dans_liste(liste,input("Element à ajouter : "))
+				afficher_la_liste(liste)
+			print("----\n")
+		elif choix=="4":#remplacer un element de la liste par un autre
+			print("----")
+			if liste == []:
+				print("Liste est vide\nCréation !")
+				liste=creerliste()
+				print("done")
+				afficher_la_liste(liste)
+				remplace(liste,input("Element à rempacer : "),input("Entrer le nouvel element : "))
+				afficher_la_liste(liste)
+			else:
+				remplace(liste,input("Element à rempacer : "),input("Entrer le nouvel element : "))
+				afficher_la_liste(liste)
+			print("----\n")
+		elif choix=="5":#Supprimer un element de la liste
+			print("----")
+			if liste == []:
+				print("Liste est vide\nCréation !")
+				liste=creerliste()
+				print("done")
+				afficher_la_liste(liste)
+				supprime(liste,input("Element à supprimer : "))
+				afficher_la_liste(liste)
+			else:
+				afficher_la_liste(liste)
+				supprime(liste,input("Element à supprimer : "))
+				afficher_la_liste(liste)
+			print("----\n")
+		elif choix=="6":#Demo de liste.py
+			demoliste()
+		else:
+			print("Aucun choix")
+			print("Fin du programme")
+			fin = 1
 
-Boucle()
+menu()
