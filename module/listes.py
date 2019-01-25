@@ -20,15 +20,18 @@ def remplace(liste,element1,element2):
 def supprime(liste,element):
 	liste.remove(element)
 
-ma_liste= ["element1","element2","element3"]
-print("la liste contient",nb_elements(ma_liste)," elements")
-afficher_la_liste(ma_liste)
+def demoliste():
+	ma_liste= ["element1","element2","element3"]
+	print("la liste contient",nb_elements(ma_liste)," elements")
+	afficher_la_liste(ma_liste)
+	
+	print("jajoute element 4 dans la liste",ajouter_dans_liste(ma_liste,"element4"))
+	afficher_la_liste(ma_liste)
 
-ajouter_dans_liste(ma_liste,"element4")
-afficher_la_liste(ma_liste)
+	print("je remplace element1 par tutu")
+	remplace(ma_liste,"element1","tutu")
+	afficher_la_liste(ma_liste)
 
-remplace(ma_liste,"element1","tutu")
-afficher_la_liste(ma_liste)
-
-supprime(ma_liste,"tutu")
-afficher_la_liste(ma_liste)
+	print("je suprime tutu de ma liste")
+	supprime(ma_liste,"tutu")
+	afficher_la_liste(ma_liste)
