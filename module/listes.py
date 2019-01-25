@@ -51,7 +51,7 @@ def creerliste():
 			fin=1
 	return liste
 
-def menu():
+def menuliste():
 	fin=0
 	liste=[]
 	while fin == 0:
@@ -134,4 +134,4 @@ def menu():
 			print("Fin du programme")
 			fin = 1
 
-menu()
+#menuliste()
